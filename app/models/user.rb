@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 	attr_accessor :password_2
 
-	validates_presence_of :email,:user_name,:password,:category_id,:password_2,:status,:email_verification
+	validates_presence_of :email,:user_name,:password,:category_id,:status,:email_verification
     validates_uniqueness_of :email
     has_many :students, dependent: :destroy
     has_many :centers, dependent: :destroy

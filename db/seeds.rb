@@ -6,24 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
  
- image = Image.create([{description: 'default'},{size: '100'}])
+ image = Image.create!([{description: 'default',size: '100'}])
+ # byebug
  
- News.create([{image_id: image.id},{content: 'first news'}])
+ subject = Subject.create!([{title: 'new subject'}])
  
- subject = Subject.create([{title: 'new subject'}])
+ klass = Klass.create!([{title: 'new class'}])
  
- klass = Klass.create([{title: 'new class'}])
+ board = Board.create!([{short_name: 'new',state:'new state',full_name:'new full name'}])
+ Course.create!([{course_name:'foundation',subject_id: subject.first.id ,klass_id: klass.first.id,board_id: board.first.id,fee:'1000',duration:'1',description: 'new course'}])
  
- board = Board.create([{short_name: 'new'},{state:'new state'},{full_name:'new full name'}])
+ category1 = Category.create!([{category_name: 'admin'}])
  
- Course.create([{course_name:'foundation'},{subject_id: subject.id },{klass_id: klass.id},{board_id: board.id},{fee:'1000'},{duration:'1'},{description: 'new course'}])
+ category2 = Category.create!([{category_name: 'center'}])
  
- category1 = Category.create([{category_name: 'admin'}])
- 
- category2 = Category.create([{category_name: 'center'}])
- 
- User.create([{user_name: 'amitshr532@gmail.com'},{email: 'amitshr532@gmail.com'},{password: 'adminamit'},{category_id: category1.id},{email_verification: '1'},{status: '1'}])
+ User.create!([{user_name: 'amitshr532@gmail.com',email: 'amitshr532@gmail.com',password: 'adminamit',category_id: category1.first.id,email_verification: '1',status: '1'}])
   
- user = User.create([{user_name: 'newcenter@gmail.com'},{email: 'newcenter@gmail.com'},{password: 'center123'},{category_id: category1.id},{email_verification: '1'},{status: '1'}])
+ user = User.create!([{user_name: 'newcenter@gmail.com',email: 'newcenter@gmail.com',password: 'center123',category_id: category1.first.id,email_verification: '1',status: '1'}])
+ News.create!([{user_id: user.first.id, image_id: image.first.id, content: 'first news'}])
  
- Center.create([{user_id: user.id},{center_name:'new center'},{center_incharge:'amit sharma'},{mobile_number:'9872569970'}])
+ Center.create!([{user_id: user.first.id,center_name:'new center',center_incharge:'amit sharma',mobile_number:'9872569970'}])
