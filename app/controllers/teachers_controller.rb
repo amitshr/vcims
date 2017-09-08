@@ -56,6 +56,15 @@ class TeachersController < ApplicationController
       if @teacher.image_id
           @image =Image.find(@teacher.image_id)
       end
+      if Address.exists?(user_id: params[:id] )
+         @address = Address.find_by_user_id(@teacher.user_id)
+      end
+      if Qualification.exists?(teacher_id: @teacher.id )
+         @qualification = Qualification.where("teacher_id = #{@teacher.id}")
+      end
+      if Experience.exists?(teacher_id: @teacher.id )
+         @experience = Experience.where("teacher_id = #{@teacher.id}")
+      end
   end
   def post
       @user_id=User.find_by_email(session[:email]).id

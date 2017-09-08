@@ -8,8 +8,7 @@ class CategoriesController < ApplicationController
     
     if @category.save
      flash[:success] = "Succesfully submitted!"
-  @category = Category.all
-     render 'show'
+  redirect_to request.referer
     else
       @error = @category.errors
           render 'new'
@@ -24,8 +23,7 @@ class CategoriesController < ApplicationController
     @category =Category.find(params[:category][:id])
     if @category.update_attributes(category_param)
        flash[:success] = "Successfully updated!"
-         @category = Category.all
-       render 'edit'
+         redirect_to request.referer
     else
        @err = @category.errors
        render 'edit' 

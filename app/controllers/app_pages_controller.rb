@@ -94,7 +94,9 @@ class AppPagesController < ApplicationController
   def post
         @post= Post.find(params[:id])
         @comment = Comment.where("post_id = #{@post.id}")
-    
+      if @post.image_id
+        @image =Image.find(@post.image_id)
+      end
   end
   def signup
     reset_session

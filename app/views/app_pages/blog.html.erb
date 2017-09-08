@@ -2,7 +2,7 @@
   	<%@blog.last(5).each do |b|%>
 		
 			<%Post.where("blog_id = #{b.id}").each do |post|%>
-				 
+				
 				     <div class="text-center">
 					<h4><strong><i>Title:-</i><%=b.title%></strong><p><%=b.description%></p></h4>
 					</div>
@@ -10,7 +10,10 @@
 					   <div class="col-sm-8 ">
 				          <p><%=post.content%></p>
 				       </div>
-				       <div class="col-sm-4"> image
+				       <div class="col-sm-4"> 
+				       		<%if post.image_id%>
+          						<%=image_tag(Image.find(post.image_id).image_url.to_s,:size => "260x180")%>
+        					<%end%>
 				       </div><br>
 				       <footer><i>by--</i><%=User.find(post.user_id).user_name%></footer>
 				        <%=link_to("click here to read full post", :controller=>"app_pages",:action=>"post",:id => post.id)%>

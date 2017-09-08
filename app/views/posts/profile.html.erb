@@ -1,13 +1,20 @@
 <%if @post%>
-    <blockquote class="blockquote">
-       <p><%=@post.content%></p>
-    <footer>
-       <%Comment.where("post_id = #{@post.id}").each do |c|%>
-        <%=c.content%>-----<%=link_to("edit",:controller=>"comments",:action=>"edit",:id=>c.id)%><br>
-        by:-<%=User.find(@post.user_id).user_name%>
-
-       <%end%>
-    </footer>
-    </blockquote>
-    <%=link_to("COMMENT",:controller=>"comments",:action=>"new",:id=> @id ,:postid=>@post.id)%>
+  <div class="media">
+   
+    <div class="media-body">
+      <h4 class="media-heading"><%=User.find(@post.user_id).email%></h4>
+        <p><%=@post.content%></p>
+          <blockquote class="blockquote">
+          <%Comment.where("post_id = #{@post.id}").each do |c|%>
+            <%=c.content%>-----<%=link_to("edit",:controller=>"comments",:action=>"edit",:id=>c.id)%><br>
+          <%end%>
+          </blockquote>
+          <%=link_to("COMMENT",:controller=>"comments",:action=>"new",:id=> @id ,:postid=>@post.id)%>
+      </div>
+       <div class="media-right media-top">
+        <%if @image%>
+          <%=image_tag(@image.image_url.to_s,:size => "260x180")%>
+        <%end%>
+    </div>
+  </div>
 <%end%>

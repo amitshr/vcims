@@ -11,8 +11,7 @@ class ChaptersController < ApplicationController
     if @chapter.save
      flash[:success] = "Succesfully submitted!"
 
-     @chapter =Chapter.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @chapter.errors
       @book=Book.find(@chapter.book_id)
@@ -28,8 +27,7 @@ class ChaptersController < ApplicationController
     @chapter =Chapter.find(params[:chapter][:id])
     if @chapter.update_attributes(chapter_param)
        flash[:success] = "Successfully updates!"
-         @chapter =Chapter.all
-     render 'show'
+        redirect_to request.referer
     else
        @err = @chapter.errors
        render 'edit' 

@@ -2,6 +2,7 @@ class QualificationsController < ApplicationController
   layout :check_layout 
   def new
     @id = params[:id] 
+    @teacher_id =Teacher.find_by_user_id(@id).id
     @qualification =Qualification.new
   end
   def create
@@ -9,11 +10,10 @@ class QualificationsController < ApplicationController
     
     if @qualification.save
      flash[:success] = "Succesfully submitted!"
-     @qualification = Qualification.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @qualification.errors
-          render 'new'
+        render 'new'
     end
   end
   
@@ -24,12 +24,10 @@ class QualificationsController < ApplicationController
   def update
     @qualification =Qualification.find(params[:qualification][:id])
     if @qualification.update_attributes(qualification_param)
-       flash[:success] = "Successfully updates!"
-      @qualification = Qualification.all
-     render 'show'
+       redirect_to request.referer
     else
        @err = @qualification.errors
-       render 'edit' 
+       render 'edit'
     end
   end
   def delete

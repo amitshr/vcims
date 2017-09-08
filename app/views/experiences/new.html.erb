@@ -1,7 +1,7 @@
 
 	<div class="panel panel-default">
   		<div class="panel-heading">
-  				Enter Address Detail 
+  				EXPERIENCE 
   		</div> 
   		<div class="panel-body">
 		<%if flash%>
@@ -15,15 +15,10 @@
 		<%end%>
 		
 		<%if @experience%>
-			<%= form_for @experience, :url=>{:controller=>"experiences",:action=>"create"} do |f|%>
-				
+			<%= form_for @experience, :url=>{:controller=>"experiences",:action=>"create"} do |f|%>		
 <form >
-	<div class="form-group row">
-    	<label class="control-label col-sm-2" >teacher:</label>
-    	<div class="col-sm-4">
-         	<%=f.text_field :teacher_id,class: "form-control"%>    		
-    	</div>
-    </div>
+	   <%=f.hidden_field :teacher_id,:value=>@teacher_id%>    		
+    	
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Organization:</label>
     	<div class="col-sm-4">
@@ -33,20 +28,20 @@
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Experience from:</label>
     	<div class="col-sm-4">
-         	<%=f.text_area :from,class: "form-control"%>    		
+         	<%=f.date_field :from,class: "form-control"%>    		
     	</div>
-    </div>
-    <div class="form-group row">
-    	<label class="control-label col-sm-2" >Experience To:</label>
+    
+    	<label class="control-label col-sm-2" >To:</label>
     	<div class="col-sm-4">
-         	<%=f.text_field :to,class: "form-control"%>    		
+         	<%=f.date_field :to,class: "form-control"%>    		
     	</div>
     </div>
 
     <div class="form-group row">
     	<label class="control-label col-sm-2" >status:</label>
-    	<div class="col-sm-4">
-         	<%=f.text_field :status,class: "form-control"%>    		
+    	<div class="col-sm-4"> 
+          <%=f.radio_button :status,'working',:checked => true%>Presently Working
+            <%=f.radio_button :status,'older'%>Older    		
     	</div>
     </div>
 

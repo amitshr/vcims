@@ -10,8 +10,7 @@ class BooksController < ApplicationController
     if @book.save
      flash[:success] = "Succesfully submitted!"
 
-          @book = Book.all
-     render 'show'
+       redirect_to request.referer
     else
       @error = @book.errors
 
@@ -27,8 +26,7 @@ class BooksController < ApplicationController
     @book =Book.find(params[:book][:id])
     if @book.update_attributes(book_param)
        flash[:success] = "Successfully updates!"
-           @book = Book.all
-       render 'show'
+           redirect_to request.referer
     else
        @err = @book.errors
        render 'edit' 

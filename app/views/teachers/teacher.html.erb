@@ -7,8 +7,34 @@
 			<p> MOBILE NUMBER:-<%=@teacher.mobile_number%></p>
 			<p> DATE OF BIRTH:-<%=@teacher.birth_date%></p>
 			<p> MARITAL STATUS:-<%=@teacher.marital_status%></p>
+			<%if @address%>
 			<h4>ADDRESS</h4>
-			<h4>QUALIFICATION</h4>
+			<p>ADDRESS:-<%=@address.line1%>,<%=@address.line2%></p>
+			<p>TOWN:-<%=@address.town%></p>
+			<p>DISTRICT:-<%=@address.district%></p>
+			<p>CITY:-<%=@address.city%></p>
+			<p>COUNTRY:-<%=@address.country%></p>
+			<p>PIN CODE:-<%=@address.pincode%></p>
+			<p>LAND LINE NUMBER:-<%=@address.landline_number%></p>
+			<%end%>
+			<%if @qualification%>
+				<h4>QUALIFICATION</h4>
+				<blockquote>
+				<%@qualification.each do |q|%>
+					<p>DEGREE:-<%=q.degree%></p>
+				<%end%>
+				</blockquote>
+			<%end%>
+			<%if @experience%>
+				<h4>EXPERIENCE</h4>
+				<blockquote>
+					<%@experience.each do |q|%>
+					<p>ORGANIZATION:-<%=q.organization_name%></p>
+					<p>FROM:<%=q.from%>-----To:<%=q.to%></p>
+					<p>WORKING STATUS:-<%=q.status%></p>
+				<%end%>
+				</blockquote>
+			<%end%>
 			<footer><%=User.find(@teacher.user_id).email%></footer>
 		</blockquote>
    	</div>
@@ -16,9 +42,60 @@
         <h4 class="text-center">IMAGE</h4>
         <%if @image%>
           <div class="thumbnail"><%=image_tag(@image.image_url.to_s,:class=> "img-circle")%></div>
-          <%end%>
+           <!-- Trigger the modal with a button -->    
+           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Upload Image</button>        
+           <!-- end -->
+        <%end%>
     </div>
   </div>      
 </div>
 
       
+
+
+
+
+
+    <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                    <!-- Modal content-->
+     <div class="modal-content">
+          <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">NEW IMAGE</h4>
+          </div>
+           <div class="modal-body">
+			<%= form_for @image, :url=>{:controller=>"images",:action=>"update"} do |f|%>
+    		<form >
+      		<%=f.hidden_field :id,:value=>@image.id,class: "form-control"%>
+	     	<%=f.hidden_field :description,:value=>@image.description%>
+	     	<%=f.hidden_field :size,:value=>@image.size,class: "form-control"%>    		
+          
+      			<div class="form-group row">
+     			 <label class="control-label col-sm-2" >IMAGE:</label>
+     				 <div class="col-sm-4">
+         			 <%=f.file_field :image%>       
+      				</div>
+    			</div>
+      			<div class="form-group row">
+    				<div class="col-sm-offset-2 col-sm-10">
+ 	    				<div class="btn-group ">
+    						<button type="submit" class="btn btn-primary">Submit</button>
+    						
+						</div>
+		  			</div>
+	   			</div>
+    		</form>
+    		<%end%>
+			  
+         </div>
+        <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+     </div>
+ 	</div>
+    </div>
+   </div>
+
+
+

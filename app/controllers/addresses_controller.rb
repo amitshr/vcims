@@ -13,7 +13,7 @@ layout :check_layout
      redirect_to  request.referer
     else
       @error = @address.errors
-      redirect_to  request.referer
+      render 'new'
     end
   end
   

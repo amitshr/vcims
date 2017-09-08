@@ -1,7 +1,7 @@
 
 	<div class="panel panel-default">
   		<div class="panel-heading">
-  		Enter Qualification 
+  		EDIT QUALIFICATION 
   		</div> 
   		<div class="panel-body">
 		<%if flash%>
@@ -18,36 +18,30 @@
 			<%= form_for @qualification, :url=>{:controller=>"qualifications",:action=>"update"} do |f|%>
 				
 <form >
-    <%=f.text_field :id,:value=>@qualification.id,class: "form-control"%>
-	<div class="form-group row">
-    	<label class="control-label col-sm-2" >Teacher:</label>
-    	<div class="col-sm-4">
-         	<%=f.hidden_field :teacher_id,:value=>@qualification.teacher_id,class: "form-control"%>    		
-    	</div>
-    </div>
+    <%=f.hidden_field :id,:value=>@qualification.id%>
+	   <%=f.hidden_field :board_id,:value=>@qualification.board_id%> 
+    <%=f.hidden_field :marks_obtained,:value=>@qualification.marks_obtained%>
+    <%=f.hidden_field :teacher_id,:value=>@qualification.teacher_id%>
+    
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Degree Name:</label>
     	<div class="col-sm-4">
          	<%=f.text_field :degree,:value=>@qualification.degree,class: "form-control"%>    		
     	</div>
     </div>
-    <div class="form-group row">
-    	<label class="control-label col-sm-2" >Board:</label>
-    	<div class="col-sm-4">
-         	<%=f.text_area :board_id,class: "form-control"%>    		
-    	</div>
-    </div>
+    
     <div class="form-group row">
     	<label class="control-label col-sm-2" >University:</label>
     	<div class="col-sm-4">
-         	<%=f.text_field :university_id,class: "form-control"%>    		
+         	    <%=f.select("university_id",options_for_select(University.all.collect{|b| [b.short_name,b.id]}))%>  		
     	</div>
     </div>
 
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Regular/Distance:</label>
     	<div class="col-sm-4">
-         	<%=f.text_field :mode,:value=>@qualification.mode,class: "form-control"%>    		
+         <%=f.radio_button :mode,'regular',:checked => true%>Regular
+            <%=f.radio_button :mode,'distance'%>Distance           		
     	</div>
     </div>
 
@@ -58,12 +52,6 @@
     	</div>
     </div>
 
-    <div class="form-group row">
-    	<label class="control-label col-sm-2" >Marks Obtained:</label>
-    	<div class="col-sm-4">
-         	<%=f.text_field :marks_obtained,:value=>@qualification.marks_obtained,class: "form-control"%>    		
-    	</div>
-    </div>
 
     <div class="form-group row">
     	<label class="control-label col-sm-2" >percentage:</label>

@@ -9,8 +9,7 @@ class ExamsController < ApplicationController
     
     if @exam.save
      flash[:success] = "Succesfully submitted!"
-      @exam = Exam.all
-     render 'show'
+      redirect_to request.referer
     else
       @error = @exam.errors
           render 'new'
@@ -25,9 +24,7 @@ class ExamsController < ApplicationController
     @exam =Exam.find(params[:exam][:id])
     if @exam.update_attributes(exam_param)
        flash[:success] = "Successfully updates!"
-       
-       @course =Exam.all
-       render 'show'
+       redirect_to request.referer
     else
        @err = @exam.errors
        render 'edit' 

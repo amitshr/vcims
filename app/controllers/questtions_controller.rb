@@ -10,8 +10,7 @@ class QuesttionsController < ApplicationController
     
     if @question.save
      flash[:success] = "Succesfully submitted!"
-      @question = Question.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @question.errors
       render 'show'
@@ -26,8 +25,7 @@ class QuesttionsController < ApplicationController
     @question =Question.find(params[:question][:id])
     if @question.update_attributes(question_param)
        flash[:success] = "Successfully updates!"
-       @question = Question.all
-        render 'show'
+       redirect_to request.referer
     else
        @err = @question.errors
        render 'edit' 

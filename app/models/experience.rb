@@ -1,4 +1,4 @@
 class Experience < ApplicationRecord
      validates_presence_of :teacher_id,:organization_name,:from,:to,:status
-     belongs_to :teachers
+     belongs_to :teacher
 end

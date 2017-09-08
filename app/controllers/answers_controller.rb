@@ -12,8 +12,7 @@ class AnswersController < ApplicationController
     
     if @answer.save
      flash[:success] = "Succesfully submitted!"
-     @answer = Answer.all
-     render 'show'
+    redirect_to request.referer
     else
       @error = @answer.errors
           render 'new'
@@ -28,8 +27,7 @@ class AnswersController < ApplicationController
     @answer =Answer.find(params[:answer][:id])
     if @answer.update_attributes(answer_param)
        flash[:success] = "Successfully updates!"
-       @answer = Answer.all
-       render 'show'
+       redirect_to request.referer
     else
        @err = @answer.errors
        render 'edit' 

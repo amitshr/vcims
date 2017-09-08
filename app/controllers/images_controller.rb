@@ -9,8 +9,7 @@ class ImagesController < ApplicationController
     
     if @image.save
      flash[:success] = "Succesfully submitted!"
-     @image=Image.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @image.errors
           render 'new'

@@ -1,13 +1,24 @@
 <%if @post%>
-    <blockquote class="blockquote">
+    <!-- Left-aligned -->
+<div class="media">
+  
+  <div class="media-body">
+    <h4 class="media-heading"><%=User.find(@post.user_id).user_name%></h4>
        <p><%=@post.content%></p>
-       <footer>
-      		<%=User.find(@post.user_id).user_name%>
-      </footer>
-    </blockquote>
-    <%@comment.each do |c|%>
-       <i><%=c.content%></i><br>
-     <i>commented by :- <%=User.find(c.user_id).email%></i><br>
+  </div>
+  <div class="media-right media-top">
+        <%if @image%>
+          <%=image_tag(@image.image_url.to_s,:size => "260x180")%>
+        <%end%>
+  </div>
+</div>
+<%@comment.each do |c|%>
+      <blockquote>
+        <i><%=c.content%></i><br>
+        <footer>
+        <i>comment by:- <%=User.find(c.user_id).email%></i><br>
         <i>status:-<span class="badge"><%=c.status%></span></i><hr>
-     <%end%>
+        </footer>
+      </blockquote>
+<%end%>
 <%end%>

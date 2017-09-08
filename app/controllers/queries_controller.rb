@@ -25,7 +25,7 @@ class QueriesController < ApplicationController
     @query =Query.find(params[:query][:id])
     if @query.update_attributes(query_param)
        flash[:success] = "Successfully updates!"
-       render 'show'
+       redirect_to request.referer
     else
        @err = @query.errors
        render 'edit' 

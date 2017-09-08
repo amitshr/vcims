@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20170825191225) do
     t.integer "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.text "image"
   end
 
   create_table "klasses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20170825191225) do
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "content"
     t.bigint "user_id"
-    t.bigint "blog_id"
+    t.bigint "post_id"
     t.string "image_id"
     t.boolean "status"
     t.datetime "created_at", null: false
@@ -249,11 +249,11 @@ ActiveRecord::Schema.define(version: 20170825191225) do
 
   create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "student_id"
+    t.integer "test_id"
     t.integer "marks_obtained"
     t.string "remark"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "test_id"
   end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -284,7 +284,7 @@ ActiveRecord::Schema.define(version: 20170825191225) do
   end
 
   create_table "student_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "student_id"
+    t.bigint "user_id"
     t.bigint "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20170825191225) do
   end
 
   create_table "teacher_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "teacher_id"
+    t.bigint "user_id"
     t.bigint "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -336,7 +336,7 @@ ActiveRecord::Schema.define(version: 20170825191225) do
   create_table "tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "test_code"
     t.text "note"
-    t.bigint "batch_id"
+    t.bigint "course_id"
     t.string "test_type"
     t.text "content"
     t.integer "marks"

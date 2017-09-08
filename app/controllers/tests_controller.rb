@@ -9,8 +9,7 @@ class TestsController < ApplicationController
     
     if @test.save
      flash[:success] = "Succesfully submitted!"
-       @test = Test.all
-     render 'show'
+       redirect_to request.referer
     else
       @error = @test.errors
           render 'new'
@@ -25,8 +24,7 @@ class TestsController < ApplicationController
     @test =Test.find(params[:test][:id])
     if @test.update_attributes(test_param)
        flash[:success] = "Successfully updates!"
-       @test = Test.all
-     render 'show'
+    redirect_to request.referer
     else
        @err = @test.errors
        render 'edit' 

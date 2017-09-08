@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   layout :check_layout
   def new
-    
-    
     @user_id=User.find_by_category_id("#{session[:category_id]}").id 
     @id = params[:id]
     @post =Post.new
@@ -53,6 +51,7 @@ class PostsController < ApplicationController
   def profile
     @id =params[:id]
     @post= Post.find(params[:postid])
+    @image=Image.find(@post.image_id)
     
   end
   def specificPost
@@ -61,6 +60,6 @@ class PostsController < ApplicationController
   end
   private
   def post_param
-    return params.require(:post).permit(:id,:content,:user_id,:blog_id,:status)
+    return params.require(:post).permit(:id,:content,:user_id,:blog_id,:image_id,:status)
   end
 end

@@ -9,8 +9,7 @@ class BoardsController < ApplicationController
     
     if @board.save
      flash.now[:success] = "Succesfully submitted!"
-     @board = Board.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @board.errors
           render 'new'
@@ -25,8 +24,7 @@ class BoardsController < ApplicationController
     @board =Board.find(params[:board][:id])
     if @board.update_attributes(board_param)
        flash[:success] = "Successfully updates!"
-       @board = Board.all
-       render 'show'
+        redirect_to request.referer
     else
        @err = @board.errors
        render 'edit' 

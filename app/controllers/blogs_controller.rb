@@ -10,8 +10,7 @@ class BlogsController < ApplicationController
     
     if @blog.save
      flash[:success] = "Succesfully submitted!"
-     @blog = Blog.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @blog.errors
           render 'new'
@@ -26,8 +25,7 @@ class BlogsController < ApplicationController
     @blog =Blog.find(params[:blog][:id])
     if @blog.update_attributes(blog_param)
        flash[:success] = "Successfully updates!"
-       @blog = Blog.all
-       render 'show'
+       redirect_to request.referer
     else
        @err = @blog.errors
        render 'edit' 

@@ -9,8 +9,7 @@ class CoursesController < ApplicationController
     
     if @course.save
      flash.now[:success] = "Succesfully submitted!"
-     @course =Course.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @course.errors
       render 'new'
@@ -25,8 +24,7 @@ class CoursesController < ApplicationController
     @course =Course.find(params[:course][:id])
     if @course.update_attributes(course_param)
        flash.now[:success] = "Successfully updates!"
-       @course =Course.all
-     render 'show'
+       redirect_to request.referer
     else
        @err = @course.errors
        render 'edit' 

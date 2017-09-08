@@ -1,19 +1,18 @@
 class ExperiencesController < ApplicationController
   layout :check_layout 
   def new
-    @id = params[:id] 
+    @id = params[:id]
+    @teacher_id =Teacher.find_by_user_id(@id).id 
     @experience =Experience.new
   end
   def create
     @experience =Experience.new(experience_param)
-    
     if @experience.save
-     flash[:success] = "Succesfully submitted!"
-     @experience =Experience.all
-     render 'show'
+       flash[:success] = "Succesfully submitted!"
+        redirect_to request.referer
     else
       @error = @experience.errors
-          render 'new'
+        render 'new'
     end
   end
   
@@ -24,11 +23,11 @@ class ExperiencesController < ApplicationController
   def update
     @experience =Experience.find(params[:experience][:id])
     if @experience.update_attributes(experience_param)
-       flash[:success] = "Successfully updates!"
-       Experience.all
+       flash[:success] = "Succesfully Edited!"
+       redirect_to request.referer
     else
        @err = @experience.errors
-       render 'edit' 
+       render 'edit'
     end
   end
   def delete

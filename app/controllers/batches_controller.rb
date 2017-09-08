@@ -9,8 +9,7 @@ class BatchesController < ApplicationController
     
     if @batch.save
      flash.now[:success] = "Succesfully submitted!"
-     @batch=Batch.all
-     render 'show'
+    redirect_to request.referer
     else
       @error = @batch.errors
           render 'new'
@@ -25,8 +24,7 @@ class BatchesController < ApplicationController
     @batch =Batch.find(params[:batch][:id])
     if @batch.update_attributes(batch_param)
        flash[:success] = "Successfully updates!"
-        @batch=Batch.all
-       render 'show'
+        redirect_to request.referer
     else
        @err = @batch.errors
        render 'edit' 

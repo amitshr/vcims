@@ -9,8 +9,7 @@ class ResultsController < ApplicationController
     
     if @result.save
      flash[:success] = "Succesfully submitted!"
-     @result =Result.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @result.errors
           render 'new'
@@ -25,8 +24,7 @@ class ResultsController < ApplicationController
     @result =Result.find(params[:result][:id])
     if @result.update_attributes(result_param)
        flash[:success] = "Successfully updates!"
-       @result =Result.all
-     render 'show'
+      redirect_to request.referer
     else
        @err = @result.errors
        render 'edit' 

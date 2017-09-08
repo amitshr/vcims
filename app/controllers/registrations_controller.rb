@@ -9,8 +9,7 @@ class RegistrationsController < ApplicationController
     
     if @registration.save
      flash[:success] = "Succesfully submitted!"
-     @registration =Registration.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @registration.errors
           render 'new'
@@ -25,8 +24,7 @@ class RegistrationsController < ApplicationController
     @registration =Registration.find(params[:registration][:id])
     if @registration.update_attributes(registration_param)
        flash[:success] = "Successfully updates!"
-       @registration =Registration.all
-       render 'show'  
+       redirect_to request.referer  
     else
        @err = @registration.errors
        render 'edit' 

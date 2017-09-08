@@ -1,7 +1,6 @@
 class VideosController < ApplicationController
   layout :check_layout 
   def new
-    @id = params[:id] 
     @video =Video.new
   end
   def create
@@ -9,8 +8,7 @@ class VideosController < ApplicationController
     
     if @video.save
      flash[:success] = "Succesfully submitted!"
-     @video =Video.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @video.errors
           render 'new'
@@ -24,9 +22,8 @@ class VideosController < ApplicationController
   def update
     @video =Video.find(params[:video][:id])
     if @video.update_attributes(video_param)
-       flash[:success] = "Successfully updates!"
-       @video =Video.all
-       render 'show'
+       flash[:success] = "Succesfully Edited!"
+         redirect_to request.referer
     else
        @err = @video.errors
        render 'edit' 

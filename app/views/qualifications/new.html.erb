@@ -1,7 +1,7 @@
 
 	<div class="panel panel-default">
   		<div class="panel-heading">
-  				Enter Address Detail 
+  				ENTER QUALIFICATION
   		</div> 
   		<div class="panel-body">
 		<%if flash%>
@@ -19,11 +19,9 @@
 				
 <form >
 	<div class="form-group row">
-    	<label class="control-label col-sm-2" >teacher:</label>
-    	<div class="col-sm-4">
-         	<%=f.select("teacher_id",options_for_select(Teacher.all.collect{|t| [t.teacher_name,t.id]}))%>    		
-    	</div>
-    </div>
+    	<%=f.text_field :teacher_id,:value=>@teacher_id%>     		
+    	<%=f.hidden_field :board_id,:value=>1%>
+      <%=f.hidden_field :marks_obtained,:value=>100%>        
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Degree Name:</label>
     	<div class="col-sm-4">
@@ -31,14 +29,10 @@
     	</div>
     </div>
     <div class="form-group row">
-    	<label class="control-label col-sm-2" >Board:</label>
-    	<div class="col-sm-4">
-         <%=f.select("board_id",options_for_select(Board.all.collect{|b| [b.short_name,b.id]}))%>            		
-    	</div>
-    </div>
-    <div class="form-group row">
-    	<label class="control-label col-sm-2" >University:</label>
-    	<div class="col-sm-4">
+
+     
+    	<label class="control-label col-sm-3" >University:</label>
+    	<div class="col-sm-3">
          	<%=f.select("university_id",options_for_select(University.all.collect{|b| [b.short_name,b.id]}))%>     		
     	</div>
     </div>
@@ -46,7 +40,8 @@
     <div class="form-group row">
     	<label class="control-label col-sm-2" >Regular/Distance:</label>
     	<div class="col-sm-4">
-         	<%=f.text_field :mode,class: "form-control"%>    		
+         	<%=f.radio_button :mode,'regular',:checked => true%>Regular
+            <%=f.radio_button :mode,'distance'%>Distance     		
     	</div>
     </div>
 
@@ -58,16 +53,11 @@
     </div>
 
     <div class="form-group row">
-    	<label class="control-label col-sm-2" >Marks Obtained:</label>
-    	<div class="col-sm-4">
-         	<%=f.text_field :marks_obtained,class: "form-control"%>    		
-    	</div>
-    </div>
-
-    <div class="form-group row">
+    	
+  
     	<label class="control-label col-sm-2" >Percentage:</label>
     	<div class="col-sm-4">
-         	<%=f.text_field :percentage,class: "form-control"%>    		
+         	<%=f.number_field :percentage,:min => 40,:max=>99,class: "form-control"%>    		
     	</div>
     </div>
 

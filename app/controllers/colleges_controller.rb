@@ -9,8 +9,7 @@ class CollegesController < ApplicationController
     
     if @college.save
      flash[:success] = "Succesfully submitted!"
-      @college = College.all
-     render 'show'
+      redirect_to request.referer
     else
       @error = @college.errors
           render 'new'
@@ -25,8 +24,7 @@ class CollegesController < ApplicationController
     @college =College.find(params[:college][:id])
     if @college.update_attributes(college_param)
        flash[:success] = "Successfully updates!"
-       @college = College.all
-     render 'show'
+       redirect_to request.referer
     else
        @err = @college.errors
        render 'edit' 

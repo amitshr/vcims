@@ -10,8 +10,7 @@ class CentersController < ApplicationController
     if @center.save
      flash[:success] = "Succesfully submitted!"
      
-    @center =Center.all
-     render 'show'
+    redirect_to request.referer
     else
       @error = @center.errors
       @center =Center.all
@@ -27,9 +26,7 @@ class CentersController < ApplicationController
     @center =Center.find(params[:center][:id])
     if @center.update_attributes(center_param)
        flash[:success] = "Successfully updates!"
-           @center =Center.all
-
-       render 'show'
+           redirect_to request.referer
     else
         @err = @center.errors
        render 'edit' 

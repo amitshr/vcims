@@ -9,8 +9,7 @@ class RoomsController < ApplicationController
     
     if @room.save
      flash[:success] = "Succesfully submitted!"
-     @room = Room.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @room.errors
       render 'new'
@@ -25,8 +24,7 @@ class RoomsController < ApplicationController
     @room =Room.find(params[:room][:id])
     if @room.update_attributes(room_param)
        flash[:success] = "Successfully updates!"
-       @room = Room.all
-     render 'show'
+      redirect_to request.referer
     else
        @err = @room.errors
        render 'edit' 

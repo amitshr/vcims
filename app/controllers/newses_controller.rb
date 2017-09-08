@@ -8,8 +8,7 @@ class NewsesController < ApplicationController
     
     if @news.save
      flash[:success] = "Succesfully submitted!"
-     @news =News.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @news.errors
           render 'new'
@@ -24,8 +23,7 @@ class NewsesController < ApplicationController
     @news =News.find(params[:news][:id])
     if @news.update_attributes(news_param)
        flash[:success] = "Successfully updates!"
-         @news =News.all
-     render 'show'
+        redirect_to request.referer
     else
        @err = @news.errors
        render 'edit' 

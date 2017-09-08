@@ -10,8 +10,7 @@ class PagesController < ApplicationController
     
     if @page.save
      flash[:success] = "Succesfully submitted!"
-     @page= Page.all
-     render 'show'
+     redirect_to request.referer
     else
       @error = @page.errors
           render 'new'
@@ -26,8 +25,7 @@ class PagesController < ApplicationController
     @page =Page.find(params[:page][:id])
     if @page.update_attributes(page_param)
        flash[:success] = "Successfully updates!"
-       @page =Page.all
-       render 'show'
+       redirect_to request.referer
     else
        @err = @page.errors
        render 'edit' 
