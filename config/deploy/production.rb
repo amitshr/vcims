@@ -7,7 +7,15 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-
+server "52.90.24.136",
+  user: "amit",
+  roles: %w{web app db},
+  ssh_options: {
+    keys: %w(/home/nugen/Downloads/amit.pem),
+    forward_agent: false,
+    auth_methods: %w(publickey)
+    # password: "please use keys"
+  }
 
 # role-based syntax
 # ==================
