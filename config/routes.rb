@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  root "app_pages#home"
   get 'tutorials/bookList'
 
   get 'tutorials/pageList'
