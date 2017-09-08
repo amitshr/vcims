@@ -1,0 +1,37 @@
+
+
+  <div class="well">
+  <h2>Schools</h2>
+  <p>Links to destroy or edit details for user are given at end of each row :</p>            
+  <p>Use delete button with caution once triggered can not recover the details again:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>School Name</th>
+         <th>city</th>
+          <th>State</th>
+          <th>Board</th>
+          <th>Girls/Boys</th>
+          <th>Contact</th>
+          <th>Edit</th>
+          <th>Delete</th>          
+      </tr>
+    </thead>
+    <tbody>
+    <%if @school%>
+    <% @school.each do |u|%>
+      <tr>
+        <td><%=u.school_name%></td>
+        <td><%=u.city%></td>
+        <td><%=u.state%></td>
+        <td><%=Board.find(u.board_id).short_name%></td>
+        <td><%=u.school_type%></td>
+        <td><%=u.contact_number%></td>
+        <td><%=link_to("edit",:controller=>"schools",:action=>"edit",:id=>u.id)%></td>
+        <td><%=link_to("delete",:controller=>"schools",:action=>"delete",:id=>u.id)%></td>
+      </tr>
+     <%end%>
+     <%end%>       
+    </tbody>
+  </table>
+  </div>

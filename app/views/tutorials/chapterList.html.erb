@@ -1,0 +1,4 @@
+<h4>Chapter Name</h4>
+<% @chapter.each do |b|%>
+	<p><%=link_to("#{b.title}",:controller=>"tutorials",:action=>"pageList",:id=>b.id)%></p>
+<%end%>

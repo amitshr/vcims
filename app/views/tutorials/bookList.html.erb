@@ -1,0 +1,9 @@
+<h4>BOOK LIST</h4>
+<div class="row">
+  <div class="col-sm-12">
+  	<%@book.each do |b|%>
+	<p>
+	<%=link_to("#{b.title}",:controller=>"tutorials",:action=>"chapterList",:id=>b.id)%></p>
+<%end%>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Edit Question 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @question%>
+			<%= form_for @question, :url=>{:controller=>"questtions",:action=>"update"} do |f|%>
+				
+<form >
+    <%=f.hidden_field :id,:value=>@question.id,class: "form-control"%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >From Page:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("page_id",options_for_select(Page.all.collect{|s| [s.title,s.id]}))%>   		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Question Number:</label>
+    	<div class="col-sm-4">
+         	<%=f.number_field :question_number,:value=>@question.question_number,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Content:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :content,:value=>@question.content,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Type Of Question(numerical/subjective/objective):</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :question_type,:value=>@question.question_type,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Insert image if any (optional):</label>
+    	<div class="col-sm-4">
+         	<%=f.select("image_id",options_for_select(Image.all.collect{|c| [c.description,c.id]}))%>    		
+    	</div>
+    </div>
+
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

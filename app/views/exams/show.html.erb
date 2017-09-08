@@ -1,0 +1,36 @@
+
+  <div class="well">
+  <h2>Examination</h2>
+  <p>Exam:</p>
+  <p>Links to destroy or edit details for user are given at end of each row :</p>            
+  <p>Use delete button with caution once triggered can not recover the details again:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Batch</th>
+         <th>Test</th>
+          <th>Center</th>
+           
+          <th>Edit</th>
+          <th>Delete</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    <%if @exam%>
+    <% @exam.each do |u|%>
+      <tr>
+        <td><%=Batch.find(u.batch_id).batch_name%></td>
+         <td><%=Test.find(u.test_id).test_code%></td>
+          <td><%=Center.find(u.center_id).center_name%></td>
+           
+        
+        <td><%=link_to("edit",:controller=>"exams",:action=>"edit",:id=>u.id)%></td>
+        <td><%=link_to("delete",:controller=>"exams",:action=>"delete",:id=>u.id)%></td>
+        
+      </tr>
+     <%end%>
+     <%end%>       
+    </tbody>
+  </table>
+  </div>

@@ -1,0 +1,24 @@
+
+  <div class="well">
+  <h2>Posts</h2>
+  <p>Link edit details are given :</p>            
+   <%if @post%>
+    <% @post.each do |u|%>
+       <h4><%=Blog.find(u.blog_id).title%></h4>
+      <blockquote class="blockquote">
+           <p><%=u.content%></p>
+      <%=link_to("EDIT",:controller=>"posts",:action=>"edit",:id=>u.id)%><br>
+
+      <footer><h4>comments</h4>
+      Comment by:- <%=User.find(u.user_id).user_name%><br>--status:<span class="badge"><%=u.status%></span></footer>
+    
+      <%=link_to("COMMENT",:controller=>"comments",:action=>"new",:id=> @id ,:postid=>u.id)%><br>
+      <%=link_to("POST PAGE",:controller=>"posts",:action=>"profile",:id=> @id ,:postid=>u.id)%>
+
+       <%if session[:category_id] == Category.find_by_category_name("admin").id.to_s%>
+      <%=link_to("DELETE",:controller=>"posts",:action=>"delete",:id=>u.id)%>
+       <%end%>
+      </blockquote>
+     <%end%>
+     <%end%>      
+  </div>

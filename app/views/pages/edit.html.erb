@@ -1,0 +1,75 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  		Edit Page 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @page%>
+			<%= form_for @page, :url=>{:controller=>"pages",:action=>"update"} do |f|%>
+				
+<form >
+    <%=hidden_field :id,:value=>@page.id%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Chapter:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("chapter_id",options_for_select(Chapter.all.collect{|c| [c.title,c.id]}))%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Title:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :title,:value=>@page.title,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Sub Title:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :sub_title,:value=>@page.sub_title,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Page Number:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :page_number,:value=>@page.page_number,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >content:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :content,:value=>@page.content,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Image:(optional)</label>
+    	<div class="col-sm-4">
+         	<%=f.select("image_id",options_for_select(Image.all.collect{|c| [c.description,c.id]}))%>     		
+    	</div>
+    </div>
+
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

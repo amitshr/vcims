@@ -1,0 +1,88 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  		Enter Qualification 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @qualification%>
+			<%= form_for @qualification, :url=>{:controller=>"qualifications",:action=>"update"} do |f|%>
+				
+<form >
+    <%=f.text_field :id,:value=>@qualification.id,class: "form-control"%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Teacher:</label>
+    	<div class="col-sm-4">
+         	<%=f.hidden_field :teacher_id,:value=>@qualification.teacher_id,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Degree Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :degree,:value=>@qualification.degree,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Board:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :board_id,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >University:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :university_id,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Regular/Distance:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :mode,:value=>@qualification.mode,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >passing Year:</label>
+    	<div class="col-sm-4">
+         	<%=f.date_field :year_of_passing,:value=>@qualification.year_of_passing,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Marks Obtained:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :marks_obtained,:value=>@qualification.marks_obtained,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >percentage:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :percentage,:value=>@qualification.percentage,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

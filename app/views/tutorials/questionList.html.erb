@@ -1,0 +1,9 @@
+<h2>QUESTIONS</h2>
+<%if @single_page%>
+   <h3>Topic:-<%=@single_page.title%></h3>
+   <h4>Sub Topic:-<%=@single_page.title%></h4>
+<%end%> 
+	<%@question.each do |b|%>
+	<%=b.question_number%>.<%=b.content%><br>
+	<%=link_to("click to see answer",:controller=>"tutorials",:action=>"answerList",:id=>b.id)%><br>
+<%end%>

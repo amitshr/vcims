@@ -1,0 +1,17 @@
+
+
+<blockquote class="blockquote">
+    <div class="row">
+    	<div class="col-sm-10 col-xs-12">
+     		<%=@news.content%>
+    	</div>
+    	<div class="col-sm-2 col-xs-12">
+      		<%=@news.image_id%>
+    	</div>
+    </div>
+<footer><%=User.find(@news.user_id).email%></footer>
+</blockquote>
+
+  
+      
+  

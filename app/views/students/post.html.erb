@@ -1,0 +1,14 @@
+<% @post.each do|post|%>
+  <h4><%=post.content%></h4>
+  <%if @comment.exists?%>
+     <%@comment.each do |c|%>
+     <blockquote class="blockquote">
+          <%=c.content%> 
+          <footer><%=User.find(@u_id).email%></footer>
+     </blockquote>
+    <%end%>
+  <%else%>
+    <p>no comments for post yet!</p>
+  <%end%>
+  <%=link_to("Give some fresh comments to this posts",:controller=>"comments",:action=>"new",:id=>@user_id,:postid=>post.id)%>
+<%end%>

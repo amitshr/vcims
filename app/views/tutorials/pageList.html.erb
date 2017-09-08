@@ -1,0 +1,4 @@
+<h4>TUTORIAL</h4>
+<%@page.each do |b|%>
+<h4><%=link_to("#{b.title}",:controller=>"tutorials",:action=>"questionList",:id=>b.id)%></h4>
+<%end%>

@@ -1,0 +1,59 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  	    Edit Chapter Detail
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @chapter%>
+			<%= form_for @chapter, :url=>{:controller=>"chapters",:action=>"update"} do |f|%>
+				
+<form >
+     <%=f.hidden_field :id,:value=>@chapter.id%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Book Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("book_id",options_for_select(Book.all.collect{|b| [b.title,b.id]}))%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Chapter Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :title,:value=>@chapter.title,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Chapter content:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :summary,:value=>@chapter.summary,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Chapter Number:</label>
+    	<div class="col-sm-4">
+         	<%=f.number_field :chapter_number,:min => 1,:max=>20,:value=>@chapter.chapter_number,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

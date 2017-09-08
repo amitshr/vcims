@@ -1,0 +1,80 @@
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+               Edit Test 
+        </div> 
+        <div class="panel-body">
+        <%if flash%>
+            <%=render "shared/flash"%>
+        <%end%>
+        
+        <%if @error%>
+        <div class="alert alert-warning">
+            <%= render"shared/error"%>
+        </div>
+        <%end%>
+        
+        <%if @test%>
+            <%= form_for @test, :url=>{:controller=>"tests",:action=>"create"} do |f|%>
+                
+<form >
+   <%=hidden_field :id,:value=> @test.id%>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Batch:</label>
+        <div class="col-sm-4">
+            <%=f.select("course_id",options_for_select(Course.all.collect{|b| [b.course_name,b.id]}))%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Test Code:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :test_code,:value=> @test.test_code,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Note:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :note,:value=> @test.note,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Type:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :test_type,:value=> @test.test_type,class: "form-control"%>         
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Content:</label>
+        <div class="col-sm-4">
+            <%=f.text_area :content,:value=> @test.content,class: "form-control"%>         
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Maximum Marks:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :marks,:value=> @test.marks,class: "form-control"%>         
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Time Duration:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :time_duration,:value=> @test.time_duration,class: "form-control"%>         
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn-group ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+                
+            </div>
+        </div>
+    </div>
+</form>
+            <%end%>
+        <%end%>
+        </div>
+    </div>

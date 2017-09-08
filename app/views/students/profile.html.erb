@@ -1,0 +1,43 @@
+ <%if @error%>
+    <div class="alert alert-warning">
+        <%= render"shared/error"%>
+    </div>
+   <%end%>
+<div class = "well">
+  <div class="row">
+     <div class="col-sm-10">
+               <blockquote class="blockquote">
+              <h4>Name:- <i><%=@student.student_name%></i></h4>
+              <h4>Email:-<i><%=User.find(@student.user_id).email%></i></h4>
+              <h4>Mobile Number:-<i><%=@student.mobile_number%></i></h4>
+              
+              <footer></footer>
+              </blockquote>
+              <%@student_status.each do |t|%>
+              <blockquote>
+                <h4>Class:<%=Klass.find(Course.find(Batch.find(t.batch_id).course_id).klass_id).title%></h4>
+                <h4>Board:<%=Board.find(Course.find(Batch.find(t.batch_id).course_id).board_id).short_name%></h4>
+                </blockquote>
+                <blockquote>
+                <h4>Course:<%=Course.find(Batch.find(t.batch_id).course_id).course_name%></h4>
+                <h4>Batch:<%=Batch.find(t.batch_id).batch_name%></h4>
+                <h4>Center :-<%=Center.find(Room.find(Batch.find(t.batch_id).room_id).center_id).center_name%></h4>
+                <h4>Room number:<%=Room.find(Batch.find(t.batch_id).room_id).room_number%>
+                </h4>
+                <h4>Subject:<%=Subject.find(Course.find(Batch.find(t.batch_id).course_id).subject_id).title%></h4>
+                </blockquote>
+            <%end%>
+              
+            
+     </div>
+     <div class="col-sm-2">
+        <h4 class="text-center">IMAGE</h4>
+        <%if image%>
+          <div class="thumbnail"><%=image_tag(@image.image_url.to_s,:class=> "img-circle")%></div>
+          <%end%>
+     </div>
+   
+  </div>      
+</div>
+
+

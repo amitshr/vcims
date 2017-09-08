@@ -1,0 +1,21 @@
+<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+<%end%>
+<%if  @teacher_status %>
+	<%@teacher_status.each do |ss|%>
+	  <blockquote>
+	  <div class="row">
+	  <div class="col-sm-4">
+	    Teacher Name:-<%=Teacher.find_by_user_id(ss.user_id).teacher_name%>
+		</div>
+		<div class="col-sm-4">
+		<%=link_to("Edit Deatils",:controller=>"teachers",:action=>"edit",:id =>Teacher.find_by_user_id(ss.user_id).id)%>
+       	</div>
+       </div>
+		</blockquote>
+	<%end%>
+<%else%>
+		 <h4>NO DATA AVAILABLE</h4>
+<%end%>

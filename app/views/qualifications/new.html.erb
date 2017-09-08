@@ -1,0 +1,87 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Enter Address Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @qualification%>
+			<%= form_for @qualification, :url=>{:controller=>"qualifications",:action=>"create"} do |f|%>
+				
+<form >
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >teacher:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("teacher_id",options_for_select(Teacher.all.collect{|t| [t.teacher_name,t.id]}))%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Degree Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :degree,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Board:</label>
+    	<div class="col-sm-4">
+         <%=f.select("board_id",options_for_select(Board.all.collect{|b| [b.short_name,b.id]}))%>            		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >University:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("university_id",options_for_select(University.all.collect{|b| [b.short_name,b.id]}))%>     		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Regular/Distance:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :mode,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Passing Year:</label>
+    	<div class="col-sm-4">
+         	<%=f.date_field :year_of_passing,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Marks Obtained:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :marks_obtained,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Percentage:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :percentage,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

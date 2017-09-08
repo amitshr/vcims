@@ -1,0 +1,16 @@
+
+<div id="divToPrint" class="well text-center">
+	<h2 class="text-center">VIDYAPEETHY CLASSES</h2>
+	<h4>Governed by:<i> Uma Vidyapeeth Education Society</i></h4>
+	<p>Board:-<%=@board.short_name%>| CLASS:-<%=@klass.title%>| SUBJECT:-<%=@subject.title%>
+	<h4>Note:-</i><%=@test.note%></i></h4>
+	<table class="table table-condensed">
+   		<th>Test Code:-<%=@test.test_code%></th>
+   		<th>Maximum Marks:-<%=@test.marks%></th>
+    	<th>Duration:-<%=@test.time_duration%>hr</th>
+	</table>
+	<table>
+		<th><%=@test.content%></th>
+	</table>
+</div>
+<button onclick="PrintDiv()" class="btn">print</button>

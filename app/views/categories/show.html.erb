@@ -1,0 +1,30 @@
+
+  <div class="well">
+  <h2>Categories</h2>
+  <p>All categories of users for this application:</p>
+  <p>Links to destroy or edit details for user are given at end of each row :</p>            
+  <p>Use delete button with caution once triggered can not recover the details again:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Category</th>
+         <th>Edit</th>
+          <th>Delete</th>
+           <th>Create New User</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%if @category%>
+    <% @category.each do |u|%>
+      <tr>
+        <td><%=u.category_name%></td>
+        
+        <td><%=link_to("edit",:controller=>"categories",:action=>"edit",:id=>u.id)%></td>
+        <td><%=link_to("delete",:controller=>"categories",:action=>"delete",:id=>u.id)%></td>
+        <td><%=link_to("new user",:controller=>"users",:action=>"new",:id=>u.id)%></td>
+      </tr>
+     <%end%>
+     <%end%>       
+    </tbody>
+  </table>
+  </div>

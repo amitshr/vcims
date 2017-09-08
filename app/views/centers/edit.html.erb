@@ -1,0 +1,58 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  	      Edit Center Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @center%>
+			<%= form_for @center, :url=>{:controller=>"centers",:action=>"update"} do |f|%>
+				
+      <form >
+            <%=f.hidden_field :center_name,:value=>@center.id,class: "form-control"%>
+	       <div class="form-group row">
+    	       <label class="control-label col-sm-2" >Email:</label>
+    	       <div class="col-sm-4">
+              	<%=f.select("user_id", options_for_select(@user.collect{|u| [u.email,u.id]}))%> </div>
+          </div>
+      <div class="form-group row">
+    	       <label class="control-label col-sm-2" >Center Name:</label>
+    	    <div class="col-sm-4">
+            	<%=f.text_field :center_name,:value=>@center.center_name,class: "form-control"%>    		
+        	</div>
+      </div>
+        <div class="form-group row">
+        	<label class="control-label col-sm-2" >Center Incharge Name:</label>
+    	     <div class="col-sm-4">
+         	    <%=f.text_field :center_incharge,:value=>@center.center_incharge,class: "form-control"%>    		
+    	     </div>
+        </div>
+        <div class="form-group row">
+    	     <label class="control-label col-sm-2" >Contact:</label>
+        	<div class="col-sm-4">
+             	<%=f.text_field :mobile_number,:value=>@center.mobile_number,class: "form-control"%>    		
+    	     </div>
+        </div>
+      <div class="form-group row">
+    	     <div class="col-sm-offset-2 col-sm-10">
+ 	    	     <div class="btn-group ">
+    			       <button type="submit" class="btn btn-primary">Submit</button>
+    			       <button type="reset" class="btn btn-primary">Reset</button>
+			    
+			       </div>
+		      </div>
+	   </div>
+      </form>
+    	<%end%>
+		  <%end%>
+        </div>
+  	</div>

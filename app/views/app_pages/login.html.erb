@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <h2>LOGIN</h2>
+      <%if flash%>
+          <%=render "shared/flash"%>
+      <%end%>
+     <% if @err %>
+       <% @err.full_messages.each do |e|%><br>
+       <span class="label label-warning"><%=e%></span>
+     <%end%> 
+     <%end%>
+       <div class="row text-center">
+     <div class="col-sm-6 col-xs-12">
+      <%= form_tag({:controller=>"app_pages",:action=>"loginCreate"}, method: "post") do %>
+       <form class="form-horizontal">
+          <div class="form-group">
+           <div class="input-group">
+           <span class="input-group-addon">email@</span>
+            <%= email_field_tag(:email,nil,class: "form-control") %>
+           </div>
+          </div>
+         <div class="form-group">
+           <div class="input-group">
+           <span class="input-group-addon">password</span>
+          <%= password_field_tag(:password,nil,class: "form-control") %>
+          </div>
+         </div>
+         <div class="form-group">
+         <div class="row"> 
+           <div class=" col-sm-12">
+             <%= submit_tag("login",class: "btn btn-info") %>
+           </div>
+          </div>
+         </div>
+      </form>     
+     <% end %>
+    <div class="col-sm-12 ">
+       forget password
+    </div> 
+     <div class="col-sm-12 ">
+        <p><a href="/app_pages/signup" class="btn btn-info">signup!</a></p>
+      </div>
+     </div>
+
+     <div class="col-sm-6 col-xs-12">
+          <ul class="list-unstyled" style="line-height: 2">
+             <li> See all your courses</li>
+             <li> Fast access</li>
+             <li> worksheets</li>
+             <li> sample papers</li>
+             <li> Get a gift <small>(only new customers)</small></li>
+          </ul> 
+      </div>
+  </div>     
+
+</div>
+</div>

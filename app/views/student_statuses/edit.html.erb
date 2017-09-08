@@ -1,0 +1,48 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  		Edit Allocation
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @student_status%>
+			<%= form_for @student_status, :url=>{:controller=>"student_statuses",:action=>"update"} do |f|%>
+
+		<form >
+     			<%=f.hidden_field :id,:value=>@student_status.id%>
+			<div class="form-group row">
+    			<label class="control-label col-sm-2" >Student:</label>
+    				<div class="col-sm-4">
+   
+          			<%=f.select("user_id", options_for_select(@user.all.collect{|u| [u.email,u.id]} ))%><br>   		
+    				</div>
+    		</div>
+    		<div class="form-group row">
+    			<label class="control-label col-sm-2" >Batch:</label>
+    				<div class="col-sm-4">
+          				<%=f.select(:batch_id, options_for_select(Batch.all.collect{|u| [u.batch_name,u.id]} ))%><br>     		
+    				</div>
+   			 </div>
+
+    		<div class="form-group row">
+    			<div class="col-sm-offset-2 col-sm-10">
+ 	    			<div class="btn-group ">
+    					<button type="submit" class="btn btn-primary">Submit</button>
+    					<button type="reset" class="btn btn-primary">Reset</button>
+					</div>
+				</div>
+			</div>
+		</form>
+    	<%end%>
+		<%end%>
+        </div>
+  	</div>

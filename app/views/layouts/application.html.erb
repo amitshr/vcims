@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By amit shrama -->
+  <title>Vidyapeeth Classes</title>
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/app_pages/home">HOME</a></li>
+        <li><a href="/app_pages/about">ABOUT</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="#portfolio">CENTERS</a></li>
+        <li><a href="#courses">COURSES</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="/app_pages/blog">BLOG</a></li>
+
+          <%if session[:email].nil?%>  
+             <li><a href="/app_pages/signup"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+          <%end%> 
+          <%if session[:email].nil?%>
+            <li><a href="/app_pages/login"><span class="glyphicon glyphicon-log-in"></span>login</a></li>
+          <%else%>
+             <li><a><span class="glyphicon glyphicon-user"></span> welcome <%= "#{ session[:email]}"%></a></li>
+             <li><a href="/app_pages/logout"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+          <%end%>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>VIDYAPEETH CLASSES</h1> 
+  <p>Direct Your Educational Career With Us !</p> 
+  
+</div>
+
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+     <h2>About Vidyapeeth Classes, <br>learning place (centre for foundation programmes)</h2><br>
+      <h4>Learning changes everything.</h4>
+      <p>Learning helps people gain the skills to find perfect line or progress in their career. In our rapidly changing world, Vidyapeeth Classes is helping to shape a brighter future for education.</p>
+      <h4>Perfectly positioned to make change happen</h4>
+      <h4><strong>Experienced faculty</strong></h4>
+      <h4>We are here for learners.A quick look at what we do</h4>
+      <p>As the learning institute, experienced employees, we’re big enough to make change happen, and we’re dedicated to doing the right thing and inspiring others to do the same. We work with educators and students to continually improve our products and services, ensuring they have the most positive impact on learning. We put the learner at the very heart of everything we do. In this way,</p><%= link_to("Read More...",:controller=>"app_pages",:action=>"about")%>
+    </div>
+    <div class="col-sm-4">
+         <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-education logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2><br>
+      <h4><strong>Whether you are a prospective student or an enquiring parent, we are delighted that you are considering Vidyapeeth Classes as your learning institution of choice.</strong></h4><br>
+      <p><strong>VISION:</strong>We pride ourselves on providing an education that nurtures the talents of our students and that offers them opportunities to develop and demonstrate these abilities. Our hope is that you will gain an appreciation for the efforts and hard work you have already put into getting here. As you move through the different stages of student life, supported by our committed staff and innovative faculty, we acknowledge that you will play the largest role in your own development as a topper and as a member of an engaged workforce. Our campuses provide a stable environment where we can celebrate your successes every step of the way. There are so many reasons why you should study with us: we are connected to result oriented courses;  we produce results;  we encourage a target oriented approach;  we are student centred and  we offer qualifications that count.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+
+<div id="services" class="container-fluid text-center">
+  <h2>SERVICES</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-off logo-small"></span>
+      <h4>Various Courses</h4>
+      <p>Our courses from basic to expert level are prepared by experts.Choose your course</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-heart logo-small"></span>
+      <h4>CARE</h4>
+      <p>Our assistance is to give parents satisfaction for care their childern</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-lock logo-small"></span>
+      <h4>PREPERATION</h4>
+      <p>We have centers at different locations to give you an environment for competition preperations </p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-leaf logo-small"></span>
+      <h4>STUDY MATERIAL</h4>
+      <p>Worksheets, Regular test, books are provided by institution</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-certificate logo-small"></span>
+      <h4>CERTIFIED</h4>
+      <p>Goverened By UMA VIDYAPEETH EDUCATION SOCIETY</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-wrench logo-small"></span>
+      <h4 style="color:#303030;">HARD WORK</h4>
+      <p>We Believe in work hard to achieve your goals "your success is our hard work reward.."</p>
+    </div>
+  </div>
+</div>
+<!-- Container (Portfolio Section) -->
+<div id="portfolio" class="container-fluid text-center bg-grey">
+  <h2>CENTERS</h2><br>
+  <h4>we have centers at various locations</h4>
+  <div class="row text-center slideanim">
+    <%Center.all.last(3).each do |c|%>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="paris.jpg" alt="jalandhar" width="400" height="300">
+        <p><strong><%=c.center_name%></strong></p>
+        <p><%=c.center_incharge%></p>
+        <p><%=c.mobile_number%></p>
+      </div>
+    </div>
+    <%end%>S
+  </div><br>
+  
+  <h2>News And Events</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+       
+      <div class="item active">
+        <h4>"<%=News.first.content%>"<br><span><%=User.find(News.first.user_id).email%></span></h4>
+      </div>
+      
+      <% News.all.drop(1).each do |u|%>
+      <div class="item">
+        <h4>"<%=u.content%>"<br><span><%=User.find(u.user_id).email%></span></h4>
+      </div>
+      <%end%>
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Container (Pricing Section) -->
+<div id="courses" class="container-fluid">
+  <div class="text-center">
+    <h2>COURSES</h2>
+    <h4>Choose any one and signup</h4>
+  </div>
+  <div class="row slideanim">
+    <%Course.all.last(3).each do |c|%>
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1><%=c.course_name%></h1>
+        </div>
+        <div class="panel-body">
+          <p><strong>Board:-</strong> <%=Board.find(c.board_id).short_name%></p>
+          <p><strong>Subject:-</strong> <%=Subject.find(c.subject_id).title%></p>
+          <p><strong>Class:-</strong> <%=Klass.find(c.klass_id).title%></p>
+          <p><strong>Description:-</strong><%=c.description%></p>
+        </div>
+        <div class="panel-footer">
+          <h3><%=c.fee%></h3>
+          <h4>per month</h4>
+          <%=link_to("Sign Up",:controller=>"app_pages",:action=>"signup")%>
+        </div>
+      </div>      
+    </div>  
+   <%end%>    
+          
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>jalandhar,Punjab</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +91-9872569970</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> amit.vidyapeethclasses@gmail.com</p>
+    </div>
+    <div class="col-sm-7 slideanim">
+    <%= form_tag({:controller=>"queries",:action=>"create"},method: "post") do%>
+     
+        <div class="col-sm-6 form-group">
+          <%=text_field_tag(:email,"Email",class: "form-control")%> 
+        </div>
+        <div class="col-sm-6 form-group">
+          <%=text_field_tag(:mobile_number,"mobile number",class: "form-control")%> 
+        </div>
+        <div class="col-sm-12 form-group">
+         <%=text_area_tag(:question,"Write something",class: "form-control",rows: 2)%>      
+        </div>
+         <div class="row">
+        <div class="col-sm-offset-4 col-sm-4 form-group col-sm-offset-4">
+          <%= submit_tag("send") %>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+<p>logon on to vidyapeeth classes<a href="/app_pages/signup" title="Visit Vidyapeeth Classes">www.vidyapeethclasses.in</a></p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>

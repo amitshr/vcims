@@ -1,0 +1,97 @@
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Student
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @student%>
+			<%= form_for @student, :url=>{:controller=>"students",:action=>"create"} do |f|%>
+				
+<form >
+            
+           <%=f.hidden_field :user_id,:value =>@id,class: "form-control"%>
+    
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Student Name:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :student_name,class: "form-control"%>           
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >father's Name:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :father_name,class: "form-control"%>          
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Mother's Name:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :mother_name,class: "form-control"%>           
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Gender:</label>
+        <div class="col-sm-4">
+            <%=f.radio_button :gender,'male',:checked => true%>Male
+            <%=f.radio_button :gender,'female'%>Female          
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Birth City:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :birth_city,class: "form-control"%>           
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Date Of Birth:</label>
+        <div class="col-sm-4">
+            <%=f.date_field :birth_date,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Contact Number:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :mobile_number,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Admission Date:</label>
+        <div class="col-sm-4">
+            <%=f.date_field :admission_date,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Image:</label>
+        <div class="col-sm-4">
+        <%=fields_for @image do |g|%>
+            <%=g.text_field :description,:value => User.find(@id).email,readonly: true,class: "form-control"%>
+            <%=g.text_field :size,:value=>100, readonly: true,class: "form-control"%>
+            <%=g.file_field :image,class: "form-control"%>
+        <%end%>           
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn-group ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+                
+            </div>
+        </div>
+    </div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

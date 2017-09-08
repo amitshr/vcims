@@ -1,0 +1,35 @@
+
+  <div class="well">
+  <h2>Registrations</h2>
+  <p>Links to destroy or edit details for user are given at end of each row :</p>            
+  <p>Use delete button with caution once triggered can not recover the details again:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Registration Number </th>
+         <th>Registration Date</th>
+          <th>Student Name</th>
+          <th>Email</th>
+          <th>Center</th>
+          <th>Course</th>
+          <th>Edit</th>
+          <th>Delete</th>          
+      </tr>
+    </thead>
+    <tbody>
+    <%if @registration%>
+    <% @registration.each do |u|%>
+      <tr>
+        <td><%=u.registration_number%></td>
+        <td><%=u.registration_date%></td>
+        <td><%=u.student_name%></td>
+        <td><%=u.center%></td>
+        <td><%=u.course%></td>
+        <td><%=link_to("edit",:controller=>"registrations",:action=>"edit",:id=>u.id)%></td>
+        <td><%=link_to("delete",:controller=>"registrations",:action=>"delete",:id=>u.id)%></td>
+      </tr>
+     <%end%>
+     <%end%>       
+    </tbody>
+  </table>
+  </div>

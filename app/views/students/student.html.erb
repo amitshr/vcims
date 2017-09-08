@@ -1,0 +1,32 @@
+<%if @student%>
+<div class="row">
+	<div class="col-sm-9">
+	<h4>PERSONAL DETAIL</h4>
+		<p>NAME:-<%=@student.student_name%></p>
+		<p>FATHER NAME:-<%=@student.father_name%></p>
+		<p>MOTHER NAME:-<%=@student.mother_name%></p>
+		<p>DATE OF BIRTH:-<%=@student.birth_date%></p>
+		<p>CONTACT NUMBER:-<%=@student.student_name%></p>
+	<%if @address%>
+		<h4>ADDRESS</h4>
+		<p>ADDRESS:-<%=@address.line1%>,<%=@address.line2%></p>
+		<p>TOWN:-<%=@address.town%></p>
+		<p>DISTRICT:-<%=@address.district%></p>
+		<p>CITY:-<%=@address.city%></p>
+		<p>COUNTRY:-<%=@address.country%></p>
+		<p>PIN CODE:-<%=@address.pincode%></p>
+		<p>LAND LINE NUMBER:-<%=@address.landline_number%></p>
+	<%end%>
+</div>
+<div class="col-sm-3">
+	<div class="panel-body">
+	<h4 class="text-center">IMAGE</h4>
+	<%if @image%>
+	 <div class="thumbnail"><%=image_tag(@image.image_url.to_s,:class=> "img-circle")%></div>
+	</div>
+	<%end%>
+</div>
+</div>
+<%else%>
+<h4>create batch</h4>
+<%end%>

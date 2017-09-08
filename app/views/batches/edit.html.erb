@@ -1,0 +1,84 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Enter Batch Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @batch%>
+			<%= form_for @batch, :url=>{:controller=>"batches",:action=>"update"} do |f|%>
+				
+<form >
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Room:-</label>
+        <div class="col-sm-10">
+            <div class ="input-group"> 
+      
+                <%=f.select("room_id",options_for_select(Room.all.collect{|c| [c.room_number,c.id]}))%>
+            </div>
+        </div>
+    </div>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Batch Name:</label>
+    	<div class="col-sm-10">
+    		<div class ="input-group"> 
+         		<%=f.text_field :batch_name,class: "form-control"%>
+    		</div>
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Course</label>
+    	<div class="col-sm-10">
+    	<div class ="input-group"> 
+	 			<%=f.select("course_id",options_for_select(Course.all.collect{|c| [c.course_name,c.id]}))%>
+    	</div>
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Session:</label>
+    	<div class="col-sm-4">
+
+			<%=f.select("sesion_id",options_for_select(Sesion.all.collect{|c| [c.title,c.id]}))%>
+        </div>
+
+    	<label class="control-label col-sm-2" >Seats:</label>
+    	<div class="col-sm-4">
+			<%=f.text_field :filled_seats,class: "form-control"%>
+  		</div>
+  	</div>
+   	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Starting Date:</label>
+    	<div class="col-sm-4">
+			<%=f.date_field :staring_date,class: "form-control"%>
+  		</div>
+  
+      	<label class="control-label col-sm-2" >Status:</label>
+    	<div class="col-sm-4">
+			<%=f.text_field :status,class: "form-control"%>    
+		</div>
+	</div>
+	 <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			</div>
+		</div>
+	</div>
+</form>
+  
+
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

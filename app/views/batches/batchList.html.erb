@@ -1,0 +1,18 @@
+<%if @batch%>
+
+	<%@batch.each do |b|%>
+		<blockquote>
+		<div class ="row">
+			<div class="col-sm-4">
+				<%=link_to("#{b.batch_name}",:controller=>"batches",:action=>"profile",:id=>b.id)%>
+			</div>
+			<div class="col-sm-4">
+				<%=link_to("Students List in batch",:controller=>"students",:action=>"studentList",:id=>b.id)%>
+			</div>
+			<div class="col-sm-4">
+        	<%=link_to("Teachers List in batch",:controller=>"teachers",:action=>"teacherList",:id=>b.id)%>
+        	</div>
+        </div>
+		</blockquote>
+	<%end%>
+<%end%>

@@ -1,0 +1,19 @@
+<blockquote class="blockquote">
+              <h4>PROFILE:-</h4>
+              Center Name<%=@center.center_name%><br>
+              Center Incharge:- <%=@center.center_incharge%><br>
+              Contact Number:-<%=@center.mobile_number%>
+
+</blockquote>
+<blockquote class="blockquote">
+        <%=link_to("NEW ROOM",:controller=>"rooms",:action=>"new")%><br>
+        <%=link_to("NEW COURSE",:controller=>"courses",:action=>"new")%><br>
+         <%=link_to("NEW BATCH",:controller=>"batches",:action=>"new")%><br>
+         
+           <%=link_to("VIEW ROOMS",:controller=>"rooms",:action=>"show")%><br>
+           <%=link_to("VIEW COURSES",:controller=>"courses",:action=>"show")%><br>
+          <%=link_to("VIEW BATCHES",:controller=>"batches",:action=>"show")%><br>
+          
+  <footer>Email:-<%=User.find(@center.user_id).email%><br></footer>
+</blockquote>
+

@@ -1,0 +1,74 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Edit Registrations 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @registration%>
+			<%= form_for @registration, :url=>{:controller=>"registrations",:action=>"update"} do |f|%>
+				
+<form >
+     <%=f.hidden_field :id,:value=>@registration.id,class: "form-control"%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Registration number:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :registration_number,:value=>@registration.registration_number,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Registration Date:</label>
+    	<div class="col-sm-4">
+         	<%=f.date_field :registration_date,:value=>@registration.registration_date,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Student Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :student_name,:value=>@registration.student_name,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Email:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :email,:value=>@registration.email,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Center:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :center,:value=>@registration.center,class: "form-control"%>    		
+    	</div>
+    </div>
+   <div class="form-group row">
+    	<label class="control-label col-sm-2" >Course:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :course,:value=>@registration.course,class: "form-control"%>    		
+    	</div>
+    </div>
+
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+<%end%>
+		<%end%>
+        </div>
+  	</div>

@@ -1,0 +1,56 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Enter Address Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @comment%>
+			<%= form_for @comment, :url=>{:controller=>"comments",:action=>"update"} do |f|%>
+				
+<form >
+    <%=hidden_field :id,:value => @comment.id%>
+    <%=hidden_field :user_id,:value => @comment.user_id%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >post:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("post_id",options_for_select(Post.all.collect{|u| [u.content,u.id]}))%>
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Content:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :content,:value => @comment.content,class: "form-control"%>    		
+    	</div>
+    </div>
+    
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Status:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :status,:value => @comment.status,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

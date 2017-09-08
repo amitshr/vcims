@@ -1,0 +1,42 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Class 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @klass%>
+			<%= form_for @klass, :url=>{:controller=>"klasses",:action=>"create"} do |f|%>
+
+
+<form >
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Class Title:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :title,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

@@ -1,0 +1,60 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  		Edit Video Details 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @video%>
+			<%= form_for @video, :url=>{:controller=>"videos",:action=>"update"} do |f|%>
+				<form >
+				<%=f.hidden_field :id,:value=>@video.id%>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Title:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :title,:value=>@video.title,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Video Length:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :video_length,:value=>@video.video_length,class: "form-control"%>          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Transcript:</label>
+        <div class="col-sm-4">
+            <%=f.text_field :transcript,:value=>@video.transcript,class: "form-control"%>         
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Source:</label>
+        <div class="col-sm-4">
+            <%=f.text_filed :source,:value=>@video.source,class: "form-control"%>         
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="btn-group ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+                
+            </div>
+        </div>
+    </div>
+</form>
+
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

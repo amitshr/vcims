@@ -1,0 +1,98 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  		Reply Query 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @query%>
+			<%= form_for @query, :url=>{:controller=>"queries",:action=>"update"} do |f|%>
+				
+<form >
+    <%=f.hidden_field :id,:value=>@query.id,class: "form-control"%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Email:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :email,:value=>@query.email,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Contact:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :mobile_number,:value=>@query.mobile_number,class: "form-control"%>    		
+    	</div>
+    </div>
+    Few details about your address
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Address:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :line1,:value=>@query.line1,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Address:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :line2,:value=>@query.line2,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >City:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :city,:value=>@query.city,class: "form-control"%>    		
+    	</div>
+    </div>
+
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >State:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :state,:value=>@query.state,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Your Question:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :question,:value=>@query.question,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Reply:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :reply,:value=>@query.reply,class: "form-control"%>    		
+    	</div>
+    </div>
+
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >status:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :status,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Send it to mail</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

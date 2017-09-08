@@ -1,0 +1,48 @@
+
+
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		<h4><%=@post.content%></h4>
+    <% @comment_all.each do |c|%>
+          <blockquote> <%=c.content%></blockquote>
+    <%end%>
+		<%if @comment%>
+			<%= form_for @comment, :url=>{:controller=>"comments",:action=>"create"} do |f|%>
+				<form >
+          <%=f.hidden_field :user_id,:value=>@id%>
+           <%=f.hidden_field :post_id,:value=>@post_id%>
+          <blockquote> <%=@comment.content%></blockquote>
+          <div class ="row">
+              <div class ="col-sm-1">
+              comment:-
+              </div>
+              <div class ="col-sm-11 ">
+               <%=f.text_area :content,:rows => 5,class: "form-control"%><br>
+              </div>
+          </div>
+          <div class ="row">
+            <div class ="col-sm-1">
+              Status:-
+            </div>
+            <div class ="col-sm-2 ">
+              <%=f.text_field :status,class: "form-control"%><br>
+            </div>
+          </div> 
+          <div class="form-group row">
+          <div class="col-sm-offset-1 col-sm-11">
+            <div class="btn-group ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+        </div>
+        </div>
+	       </form>
+    	<%end%>
+		<%end%>

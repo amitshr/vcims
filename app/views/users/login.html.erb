@@ -1,0 +1,52 @@
+<div class="panel panel-default text-center">
+<div class="panel-body">
+<div class="row text-center">
+<h2>LOGIN</h2>
+  <%if flash.now%>
+        <%=render "shared/flash"%>
+    <%end%>
+    
+<%= form_tag({:controller=>"users",:action=>"loginCreate"}, method: "post") do %>
+  <form class="form-horizontal">
+    <hr>
+    <div class="form-group">
+      <div class="col-sm-12">
+        Username:-<%= text_field_tag(:email,"Enter Your Email") %>
+        </div>
+    </div>
+    <br><hr>
+    <div class="form-group">
+        <div class="col-sm-12">
+        Password:-<%= password_field_tag(:password) %>
+        </div>
+      </div>
+      <br><hr>
+      <div class="form-group"> 
+      <div class=" col-sm-12">
+        <%= submit_tag("login") %>
+      </div>
+      </div>
+  </form>
+<% end %>
+
+<ul class="list-unstyled" style="line-height: 2">
+  <li> See all your courses</li>
+  <li> Fast access</li>
+  <li> worksheets</li>
+  <li> sample papers</li>
+  <li> Get a gift <small>(only new customers)</small></li>
+
+</ul>
+</div>
+<div class="col-sm-12 ">
+        <p><a href="/app_pages/signup" class="btn btn-info btn-block">signup!</a></p>
+      </div>
+
+
+<% if @err %>
+      <% @err.full_messages.each do |e|%><br>
+      <span class="label label-warning"><%=e%></span>
+      <%end%>  
+<%end%>
+</div>
+</div>

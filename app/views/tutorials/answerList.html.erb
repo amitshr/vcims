@@ -1,0 +1,15 @@
+<h4>ANSWERS</h4>
+
+	<%@answer.each do |b|%>
+   	<div class="row">
+   		<div class="col-sm-1">
+    		<i>Answer:-</i>
+   		</div>
+   		
+   		<div class="col-sm-11">
+    	<blockquote class="blockquote"><%=b.content%><br></blockquote>
+   		</div>
+   	</div>
+
+<%end%>
+

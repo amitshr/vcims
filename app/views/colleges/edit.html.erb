@@ -1,0 +1,82 @@
+<div class="container">
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Enter Address Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @college%>
+			<%= form_for @college, :url=>{:controller=>"colleges",:action=>"update"} do |f|%>
+				
+<!--education_mode for girls college or boys college   -->
+
+<form >
+    <%=f.hidden_field :id,:value=>@college.id,class: "form-control"%>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >College Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :college_name,:value=>@college.college_name,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >City:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :city,:value=>@college.city,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >State:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :state,:value=>@college.state,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >University:</label>
+    	<div class="col-sm-4">
+         	<%=f.select("University_id",options_for_select(University.all.collect{|u| [u.short_name,u.id]}))%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >College specialized in:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :college_type,:value=>@college.college_type,class: "form-control"%>    		
+    	</div>
+    </div>
+     <div class="form-group row">
+    	<label class="control-label col-sm-2" >Contact Number:</label>
+    	<div class="col-sm-4">
+         	<%=f.telephone_field :contact_number,:value=>@college.contact_number,class: "form-control"%>    		
+    	</div>
+    </div>
+     <div class="form-group row">
+    	<label class="control-label col-sm-2" >girls/boys/co-educational:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :education_mode,:value=>@college.education_mode,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>
+ </div>

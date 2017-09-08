@@ -1,0 +1,13 @@
+<%if @post%>
+    <blockquote class="blockquote">
+       <p><%=@post.content%></p>
+    <footer>
+       <%Comment.where("post_id = #{@post.id}").each do |c|%>
+        <%=c.content%>-----<%=link_to("edit",:controller=>"comments",:action=>"edit",:id=>c.id)%><br>
+        by:-<%=User.find(@post.user_id).user_name%>
+
+       <%end%>
+    </footer>
+    </blockquote>
+    <%=link_to("COMMENT",:controller=>"comments",:action=>"new",:id=> @id ,:postid=>@post.id)%>
+<%end%>

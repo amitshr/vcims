@@ -1,0 +1,80 @@
+
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Edit User
+  		</div> 
+  		<div class="panel-body">
+			<%if flash%>
+   				<%=render "shared/flash"%>
+			<%end%>
+		
+			<%if @error%>
+				<div class="alert alert-warning">
+    				<%= render"shared/error"%>
+				</div>
+			<%end%>
+		
+		<%if @user%>
+			<%= form_for @user, :url=>{:controller=>"users",:action=>"update"} do |f|%>
+		<form >
+		<div class="form-group row">
+    		<div class="col-sm-4">
+				<%=f.text_field :id,:value=> @user.id%>
+  			</div>
+  		</div>
+		<div class="form-group row">
+    		<div class="col-sm-4">
+				<%=f.hidden_field :category_id,:value=> @user.category_id%>
+  			</div>
+  		</div>
+		<div class="form-group row">
+    		<label class="control-label col-sm-2" ></label>
+    		<div class="col-sm-10">
+    			<div class ="input-group"> 
+        			<span class="input-group-addon">email@</span>
+	 					<%=f.email_field :email,:value=> @user.email,class: "form-control"%>
+    			</div>
+    		</div>
+    	</div>
+		<div class="form-group row">
+    		<div class="col-sm-12">
+         	 <%=f.hidden_field :user_name,:value=>"vidyapeethclasses",class: "form-control"%>
+    		</div>
+    	</div>
+    	
+    		<div class="form-group row">
+    		<label class="control-label col-sm-2" >Password:</label>
+    		<div class="col-sm-4">
+			<%=f.password_field :password,class: "form-control"%>
+        </div>
+
+    	<label class="control-label col-sm-2" >Confirm Password:</label>
+    	<div class="col-sm-4">
+			<%=f.password_field :password_2,class: "form-control"%>
+  		</div>
+  		</div>
+   		
+  		<div class="form-group row">
+      	<div class="col-sm-4">
+			<%=f.hidden_field :email_verification,:value=>1,class: "form-control"%>    
+		</div>
+	
+    	<div class="col-sm-4">
+			<%=f.hidden_field :status,:value=>1,class: "form-control"%>
+		</div>
+    	</div>
+    	<div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			</div>
+		</div>
+		</div>
+</form>
+  
+
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

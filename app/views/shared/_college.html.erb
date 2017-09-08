@@ -1,0 +1,57 @@
+
+<!--education_mode for girls college or boys college   -->
+
+<form >
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >College Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :college_name,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >City:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :city,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >State:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_area :state,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >University:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :university_id,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >College specialized in:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :college_type,class: "form-control"%>    		
+    	</div>
+    </div>
+     <div class="form-group row">
+    	<label class="control-label col-sm-2" >Contact Number:</label>
+    	<div class="col-sm-4">
+         	<%=f.telephone_field :contact_number,class: "form-control"%>    		
+    	</div>
+    </div>
+     <div class="form-group row">
+    	<label class="control-label col-sm-2" >girls/boys/co-educational:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :education_mode,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>

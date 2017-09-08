@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+  		<div class="panel-heading">
+  				Enter Course Detail 
+  		</div> 
+  		<div class="panel-body">
+		<%if flash%>
+   			<%=render "shared/flash"%>
+		<%end%>
+		
+		<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+		<%end%>
+		
+		<%if @course%>
+			<%= form_for @course, :url=>{:controller=>"courses",:action=>"create"} do |f|%>
+				
+<form >
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Course Name:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :course_name,class: "form-control"%>    		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Subject:</label>
+    	<div class="col-sm-4">
+        <%=f.select(:subject_id, options_for_select(Subject.all.collect{|u| [u.title,u.id]} )) %>     		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Class:</label>
+    	<div class="col-sm-4">
+         	<%=f.select(:klass_id, options_for_select(Klass.all.collect{|u| [u.title,u.id]} )) %>		
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Board:</label>
+    	<div class="col-sm-4">
+         	<%=f.select(:board_id, options_for_select(Board.all.collect{|u| [u.short_name,u.id]} )) %>    		
+    	</div>
+    </div>
+   <div class="form-group row">
+      <label class="control-label col-sm-2" >Fee:</label>
+      <div class="col-sm-4">
+          <%=f.text_field :fee,class: "form-control"%>        
+      </div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Duration:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :duration,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Describe Course:</label>
+    	<div class="col-sm-4">
+         	<%=f.text_field :description,class: "form-control"%>    		
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			    
+			</div>
+		</div>
+	</div>
+</form>
+    		<%end%>
+		<%end%>
+        </div>
+  	</div>

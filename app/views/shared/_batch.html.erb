@@ -1,0 +1,62 @@
+
+<form >
+    <div class="form-group row">
+        <label class="control-label col-sm-2" >Address Of:-</label>
+        <div class="col-sm-10">
+            <div class ="input-group"> 
+            <span class="input-group-addon">id</span>
+                <%=f.text_field :room_id,:value=>Room.find(@id).id,class: "form-control"%>
+            </div>
+        </div>
+    </div>
+	<div class="form-group row">
+    	<label class="control-label col-sm-2" >Address:</label>
+    	<div class="col-sm-10">
+    		<div class ="input-group"> 
+        	<span class="input-group-addon"> 	line 1</span>
+         		<%=f.text_field :batch_name,class: "form-control"%>
+    		</div>
+    	</div>
+    </div>
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" ></label>
+    	<div class="col-sm-10">
+    	<div class ="input-group"> 
+        	<span class="input-group-addon"> 	line 2 </span>
+	 			<%=f.text_field :course_id,:value =>Course.all.id ,class: "form-control"%>
+    	</div>
+    	</div>
+    </div>
+
+    <div class="form-group row">
+    	<label class="control-label col-sm-2" >Town:</label>
+    	<div class="col-sm-4">
+			<%=f.text_field :sesion_id,:value =>Sesion.all.id,class: "form-control"%>
+        </div>
+
+    	<label class="control-label col-sm-2" >District:</label>
+    	<div class="col-sm-4">
+			<%=f.text_field :filled_seats,class: "form-control"%>
+  		</div>
+  	</div>
+   	<div class="form-group row">
+    	<label class="control-label col-sm-2" >State:</label>
+    	<div class="col-sm-4">
+			<%=f.date_field :starting_date,class: "form-control"%>
+  		</div>
+  
+      	<label class="control-label col-sm-2" >City:</label>
+    	<div class="col-sm-4">
+			<%=f.text_field :status,class: "form-control"%>    
+		</div>
+	</div>
+	 <div class="form-group row">
+    	<div class="col-sm-offset-2 col-sm-10">
+ 	    	<div class="btn-group ">
+    			<button type="submit" class="btn btn-primary">Submit</button>
+    			<button type="reset" class="btn btn-primary">Reset</button>
+			</div>
+		</div>
+	</div>
+</form>
+  

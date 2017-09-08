@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By amit shrama -->
+  <title>Vidyapeeth Classes</title>
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/profile">PROFILE</a></li>
+          <li><a href="/blogs/blogList">BLOG</a></li>
+          <li><a href="/tutorials/profile">TUTORIAL</a></li>
+
+          <%if session[:email].nil?%>  
+             <li><a href="/app_pages/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <%end%> 
+          <%if session[:email].nil?%>
+             <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
+          <%else%>
+             <li><a><span class="glyphicon glyphicon-user"></span> welcome <%= "#{ session[:email]}"%></a></li>
+             <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+          <%end%>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>VIDYAPEETH CLASSES</h1> 
+  <p>Direct Your Educational Career With Us !</p>
+</div>
+
+<div id="" class="container-fluid">
+  
+ <div class="row">
+    <div class="col-sm-2">
+   
+         <ul class="nav list-group">
+            <h4>CREATE</h4>
+            <li><i class="icon-home icon-1x"></i><%= link_to("CATEGORY",:controller=>"categories",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("USER",:controller=>"users",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("CENTER",:controller=>"centers",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("STUDENTS",:controller=>"students",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("SESSION",:controller=>"sesions",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("SUBJECT",:controller=>"subjects",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("CLASS",:controller=>"klasses",:action=> "new")%></li>
+              <li><i class="icon-home icon-1x"></i><%= link_to("BOARD",:controller=>"boards",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("COLLEGE",:controller=>"colleges",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("SCHOOL",:controller=>"schools",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("UNIVERSITY",:controller=>"universities",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("POST",:controller=>"posts",:action=> "new")%></li> 
+            <li><i class="icon-home icon-1x"></i><%= link_to("COMMENT",:controller=>"comments",:action=> "new")%></li> 
+            <li><i class="icon-home icon-1x"></i><%= link_to("TEST",:controller=>"tests",:action=> "new")%></li>  
+            <li><i class="icon-home icon-1x"></i><%= link_to("NEWS/EVENTS",:controller=>"newses",:action=> "new")%></li> 
+            <li><i class="icon-home icon-1x"></i><%= link_to("IMAGE",:controller=>"images",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("BOOK",:controller=>"books",:action=> "new")%></li> 
+            <li><i class="icon-home icon-1x"></i><%= link_to("CHAPTER",:controller=>"chapters",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("PAGE",:controller=>"pages",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("QUESTION",:controller=>"questtions",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("ANSWER",:controller=>"answers",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("RESULT",:controller=>"results",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("EXAM",:controller=>"exams",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("REGISTRATION",:controller=>"registrations",:action=> "new")%></li>
+            <li><i class="icon-home icon-1x"></i><%= link_to("ROOM",:controller=>"rooms",:action=> "new")%></li>
+             <li><i class="icon-home icon-1x"></i><%= link_to("VIDEO",:controller=>"videos",:action=> "new")%></li>
+          </ul>
+    </div>
+    <div class="col-sm-8">
+      <%= yield%>
+   </div>
+   <div class="col-sm-2">
+      <ul class="nav list-group">
+        <h4>VIEWS</h4>
+          <li><i class="icon-home icon-1x"></i><%= link_to("CATEGORIES",:controller=>"categories",:action=> "show")%></li> 
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW USERS",:controller=>"users",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW CENTERS",:controller=>"centers",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW STUDENTS",:controller=>"students",:action=> "show")%></li>    
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW TEACHERS",:controller=>"teachers",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW CENTERS",:controller=>"centers",:action=> "show")%></li>  
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW ADDRESSES",:controller=>"addresses",:action=> "show")%></li> 
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW BATCHES",:controller=>"batches",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW COURSES",:controller=>"courses",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW BLOGS",:controller=>"blogs",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW BOOKS",:controller=>"books",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW NEWS/EVENTS",:controller=>"newses",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW SESSION",:controller=>"sesions",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW TEST",:controller=>"tests",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW UNIVERSITIES",:controller=>"universities",:action=> "show")%></li>   
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW POSTS",:controller=>"posts",:action=> "show")%></li> 
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW COMMENTS",:controller=>"comments",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW SUBJECTS",:controller=>"subjects",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW CLASSES",:controller=>"klasses",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VEIW COLLEGE",:controller=>"colleges",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW SCHOOLS",:controller=>"schools",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW BOARDS",:controller=>"boards",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW IMAGES",:controller=>"images",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW VIDEO",:controller=>"videos",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW CHAPTER",:controller=>"chapters",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW PAGE",:controller=>"pages",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW QUESTION",:controller=>"questtions",:action=> "show")%></li>
+          <li><i class="icon-home icon-1x"></i><%= link_to("VIEW ANSWER",:controller=>"answers",:action=> "show")%></li>
+      </ul>
+   </div>
+  </div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>jalandhar,Punjab</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +91-9872569970</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> amit.vidyapeethclasses@gmail.com</p>
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>logon on to vidyapeeth classes<a href="/app_pages/signup" title="Visit Vidyapeeth Classes">www.vidyapeethclasses.in</a></p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+
+</body>
+</html>

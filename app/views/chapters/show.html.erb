@@ -1,0 +1,39 @@
+
+  <div class="well">
+  <h2>Chapters</h2>
+  <p>List of Chapters:</p>
+  <p>Links to destroy or edit details for user are given at end of each row :</p>            
+  <p>Use delete button with caution once triggered can not recover the details again:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+      <th>BOOK</th>
+      <th>CHAPTER HEADING</th>
+      <th>NUMBER</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%if @chapter%>
+    <% @chapter.each do |u|%>
+      <tr>
+        <td><%=Book.find(u.book_id).title%></td>
+        <td><%=u.title%></td>
+        <td><%=u.chapter_number%></td>   
+         <%if session[:category_id] == Category.find_by_category_name("admin").id.to_s%>
+            <td><%=link_to("edit",:controller=>"chapters",:action=>"edit",:id=>u.id)%></td>
+            <td><%=link_to("delete",:controller=>"chapters",:action=>"delete",:id=>u.id)%></td>
+        <%end%>
+         <td><%=link_to("NEW CHAPTER",:controller=>"chapters",:action=>"new",:id=>u.book_id)%></td>
+         <td><%=link_to("NEW PAGE",:controller=>"pages",:action=>"new",:id=>u.id)%></td>
+      </tr>
+     <%end%>
+     <%end%>       
+    </tbody>
+  </table>
+  	<%if @error%>
+		<div class="alert alert-warning">
+    		<%= render"shared/error"%>
+		</div>
+   <%end%>
+
+  </div>

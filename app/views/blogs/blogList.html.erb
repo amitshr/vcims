@@ -1,0 +1,4 @@
+<h4>SELECT BLOG FOR POST</h4>
+<%@blog.each do |b|%>
+	<%=link_to("#{b.title}",:controller=>"posts",:action=>"new",:id=>b.id)%><br>
+<%end%>
