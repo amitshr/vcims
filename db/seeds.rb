@@ -19,6 +19,8 @@
  category1 = Category.create!([{category_name: 'admin'}])
  
  category2 = Category.create!([{category_name: 'center'}])
+ Category.create!([{category_name: 'student'}])
+ Category.create!([{category_name: 'teacher'}])
  
  User.create!([{user_name: 'amitshr532@gmail.com',email: 'amitshr532@gmail.com',password: 'adminamit',category_id: category1.first.id,email_verification: '1',status: '1'}])
   
