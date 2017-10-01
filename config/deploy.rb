@@ -2,7 +2,7 @@
 lock "3.9.0"
 
 set :application, "vcims"
-set :repo_url, "https://github.com/vanurox/vcims.git"
+set :repo_url, "https://github.com/amitshr/vcims.git"
 
 set :deploy_to, '/home/amit/vcims'
 
