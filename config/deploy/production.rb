@@ -11,7 +11,7 @@ server "52.90.24.136",
   user: "amit",
   roles: %w{web app db},
   ssh_options: {
-    keys: %w(/home/nugen/Downloads/amit.pem),
+    keys: %w(/home/amit/Desktop/amit.pem),
     forward_agent: false,
     auth_methods: %w(publickey)
     # password: "please use keys"
